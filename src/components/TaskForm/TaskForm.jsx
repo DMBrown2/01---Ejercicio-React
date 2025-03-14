@@ -10,7 +10,7 @@ export default function TaskForm( {addTask} ) {
 
 
     return (
-        <form className="task-form" onSubmit={handleSubmit(addTask)}>
+        <form className="task-form">
             <h1> Lista de compras</h1>
             
                 <div className="input-group">
@@ -22,7 +22,7 @@ export default function TaskForm( {addTask} ) {
 
                 </div>
 
-                <button type="submit">
+                <button type="submit" onClick={handleSubmit(addTask)}>
                     Agregar
                 </button>
 

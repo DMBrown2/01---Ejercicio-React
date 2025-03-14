@@ -1,0 +1,16 @@
+.task-list {
+    ul {
+        li.task-item {
+            display: flex;
+            align-items: center;
+            height: 15px;
+            gap: 8px;
+
+            
+
+        }
+        .input[type="checkbox"]:checked {
+            text-decoration: line-through;
+        }
+    }
+}

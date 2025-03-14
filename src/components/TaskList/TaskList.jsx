@@ -1,27 +1,27 @@
 //2.Crear un componente "TaskList" que muestre la lista de tareas actual. El componente debe recibir la lista de tareas como una prop y mostrar cada tarea en un elemento de la lista. Cada elemento de la lista debe incluir un botón "Eliminar" que permita al usuario eliminar esa tarea de la lista.
 
 import './TaskList.css';
-import { useForm } from 'react-hook-form';
+// import { useForm } from 'react-hook-form';
 
 
-const TASKS = []
+// const TASKS = []
 
 
-export default function TaskList({ tareas, deleteTask }) {
-    const { register, handleSubmit } = useForm();
+export default function TaskList({ tareas, deleteTask, markAsRead }) {
+    // const { register, handleSubmit } = useForm();
 
 
     return (
-        <div className='task-list' onSubmit={handleSubmit(deleteTask)}>
+        <div className='task-list'>
 
             {
                 tareas.map(tarea => (
                  
-                        <ul>
-                            <li>
-                                <input type="checkbox" {...register("checkbox")} id='checkbox' />
-                                <span key={tarea.id}>{tarea.task}</span>
-                                <button className='button-delete'>Eliminar</button>
+                        <ul key={tarea.id}>
+                            <li className='task-item'>
+                                <input type="checkbox" id='checkbox' onClick={ () => markAsRead(tarea.id)  } />
+                                <span>{tarea.task}</span>
+                                <button className='button-delete' onClick={() => deleteTask(tarea.id)}>Eliminar</button>
                             </li>
                         </ul>
                     

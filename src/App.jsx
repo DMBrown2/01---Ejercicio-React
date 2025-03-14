@@ -21,14 +21,35 @@ export default function App() {
       setTasks(taskCopy)
   }
 
+
   function deleteTask(id) {
-    setTasks(tasks.filter((task) => task.id !== id))
+    // setTasks(tasks.filter((task) => task.id !== id))
+    const indice = tasks.findIndex(task => task.id === id)
+    const taskCopy = [...tasks]
+    taskCopy.splice(indice, 1)
+    setTasks(taskCopy)
   }
 
+
+  function markAsRead(id) {
+    console.log("marcar como leido")
+
+    const task = tasks.find((task) => {
+      if(task.id === id) {
+       return true
+      }
+    })
+
+    task.alreadyRead = true
+    setTasks([...tasks])
+
+  }
+
+
   return (
-    <div className="max-w-md mx-auto mt-10 p-4">
+    <div>
       <TaskForm addTask={addTask} />
-      <TaskList tareas={tasks} deleteTask={deleteTask} />
+      <TaskList tareas={tasks} deleteTask={deleteTask} markAsRead={markAsRead} />
     </div>
   )
 
